@@ -1,5 +1,6 @@
 package com.snumbers.bdpickupws.security;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -45,11 +46,19 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         if (token != null) {
             token = token.replace(SecurityConstants.TOKEN_PREFIX, "");
 
-            String user = Jwts.parser()
-                    .setSigningKey(SecurityConstants.getTokenSecret())
-                    .parseClaimsJws(token)
-                    .getBody()
-                    .getSubject();
+            String user = null;
+            try {
+                user = Jwts.parser()
+                        .setSigningKey(SecurityConstants.getTokenSecret())
+                        .parseClaimsJws(token)
+                        .getBody()
+                        .getSubject();
+            } catch (ExpiredJwtException e) {
+                logger.error("Token Expired", e.getCause());
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
 
             if (user != null)
                 return new UsernamePasswordAuthenticationToken(user, "",  new ArrayList<>());

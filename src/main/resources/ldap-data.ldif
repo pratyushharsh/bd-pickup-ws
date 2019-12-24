@@ -44,15 +44,35 @@ sn: Alex
 uid: ben
 userPassword: {SHA}nFCebWjxfaLbHHG1Qk5UU4trbvQ=
 
-dn: uid=bob,ou=people,dc=springframework,dc=org
+dn: uid=retailuser,ou=people,dc=springframework,dc=org
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
 cn: Bob Hamilton
 sn: Hamilton
-uid: bob
-userPassword: bobspassword
+uid: retailuser
+userPassword: 12345
+
+dn: uid=fashion1,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Bob Hamilton
+sn: Hamilton
+uid: fashion1
+userPassword: 12345
+
+dn: uid=fashion2,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Bob Hamilton
+sn: Hamilton
+uid: fashion2
+userPassword: 12345
 
 dn: uid=joe,ou=otherpeople,dc=springframework,dc=org
 objectclass: top
@@ -62,7 +82,7 @@ objectclass: inetOrgPerson
 cn: Joe Smeth
 sn: Smeth
 uid: joe
-userPassword: joespassword
+userPassword: 12345
 
 dn: cn=mouse\, jerry,ou=people,dc=springframework,dc=org
 objectclass: top
@@ -105,14 +125,15 @@ uid: space cadet
 userPassword: spacecadetspassword
 
 
-
 dn: cn=developers,ou=groups,dc=springframework,dc=org
 objectclass: top
 objectclass: groupOfUniqueNames
 cn: developers
 ou: developer
 uniqueMember: uid=ben,ou=people,dc=springframework,dc=org
-uniqueMember: uid=bob,ou=people,dc=springframework,dc=org
+uniqueMember: uid=retailuser,ou=people,dc=springframework,dc=org
+uniqueMember: uid=fashion1,ou=people,dc=springframework,dc=org
+uniqueMember: uid=fashion2,ou=people,dc=springframework,dc=org
 
 dn: cn=managers,ou=groups,dc=springframework,dc=org
 objectclass: top
