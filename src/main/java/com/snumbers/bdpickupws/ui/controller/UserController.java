@@ -20,9 +20,4 @@ public class UserController {
     public UserDashBoardDto getUser(@PathVariable("userid") String userid) {
         return userService.getUserDashBoard(userid);
     }
-
-    @PostMapping
-    public UserDetailResponseModel createUser(@RequestBody UserDetailRequestModel user) {
-        return new UserDetailResponseModel();
-    }
 }

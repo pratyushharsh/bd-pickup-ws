@@ -21,9 +21,9 @@ public class UserServiceImpl implements UserService {
         Session session = sessionFactory.getCurrentSession();
         Transaction tx = session.beginTransaction();
         SQLQuery query = session.createSQLQuery("Select * from (\n" +
-                "    Select complete_user, status from sim14.ful_ord_pick) \n" +
+                "    Select pick_user_id, status from sim14.atg_ful_ord_pick_assign) \n" +
                 "    PIVOT (COUNT(status) as status for (status) IN (0 as NEW, 1 as IN_PROGRESS, 2 as COMPLETED, 3 as CANCELLED, 4 as ACTIVE)\n" +
-                ") where complete_user = '" + userId + "'");
+                ") where pick_user_id = '" + userId + "'");
         List<Object[]> rows = query.list();
         tx.commit();
         UserDashBoardDto user = new UserDashBoardDto();
