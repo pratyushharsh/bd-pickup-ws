@@ -13,4 +13,8 @@ public class AppProperties {
     public String getTokenSecret() {
         return env.getProperty("tokensecret");
     }
+
+    public String getTokenExpirationTime() {
+        return env.getProperty("token.expiration.time");
+    }
 }

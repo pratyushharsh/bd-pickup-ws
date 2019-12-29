@@ -1,9 +1,13 @@
 package com.snumbers.bdpickupws.shared.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class UserDashBoardDto {
+@AllArgsConstructor
+public class UserDashBoardDto implements Serializable {
 
     String userId;
     Long newOrder;

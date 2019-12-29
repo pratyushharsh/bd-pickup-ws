@@ -24,7 +24,26 @@ public class PickLineItemEntity {
     private Double case_size;
     private Integer line_item_ordinal;
 
-    @ManyToOne
+
+    @OneToOne
     @JoinColumn(name = "item_id", referencedColumnName = "item_id")
     private ItemEntity item;
+
+    @Override
+    public String toString() {
+        return "PickLineItemEntity{" +
+                "id=" + id +
+                ", item_id='" + item_id + '\'' +
+                ", ful_ord_pick_id=" + ful_ord_pick_id +
+                ", ful_ord_id=" + ful_ord_id +
+                ", ful_ord_line_item_id=" + ful_ord_line_item_id +
+                ", substitute_line_item_id=" + substitute_line_item_id +
+                ", preferred_uom='" + preferred_uom + '\'' +
+                ", quantity_suggested=" + quantity_suggested +
+                ", quantity_picked=" + quantity_picked +
+                ", case_size=" + case_size +
+                ", line_item_ordinal=" + line_item_ordinal +
+                ", item=" + item +
+                '}';
+    }
 }

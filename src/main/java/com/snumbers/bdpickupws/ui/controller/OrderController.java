@@ -3,11 +3,11 @@ package com.snumbers.bdpickupws.ui.controller;
 import com.snumbers.bdpickupws.entity.AtgPickOrderView;
 import com.snumbers.bdpickupws.service.OrderService;
 import com.snumbers.bdpickupws.entity.PickLineItemEntity;
+import com.snumbers.bdpickupws.ui.model.request.PickUpdateRequest;
+import com.snumbers.bdpickupws.ui.model.response.PickUpdateResponse;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,4 +34,10 @@ public class OrderController {
         return orderService.getPickOrderDetail(pickId);
     }
 
+    @PostMapping("pickId/{pickId}")
+    public PickUpdateResponse updatePickQuantity(@RequestBody PickUpdateRequest request, @PathVariable("pickId") Long pickId) {
+        PickUpdateResponse resp = new PickUpdateResponse();
+        BeanUtils.copyProperties(resp, orderService.updatePickQuantity(request));
+        return resp;
+    }
 }
