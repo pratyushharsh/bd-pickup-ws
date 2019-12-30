@@ -37,7 +37,8 @@ public class OrderController {
     @PostMapping("pickId/{pickId}")
     public PickUpdateResponse updatePickQuantity(@RequestBody PickUpdateRequest request, @PathVariable("pickId") Long pickId) {
         PickUpdateResponse resp = new PickUpdateResponse();
-        BeanUtils.copyProperties(resp, orderService.updatePickQuantity(request));
+        PickLineItemEntity pick = orderService.updatePickQuantity(request);
+        BeanUtils.copyProperties(pick, resp);
         return resp;
     }
 }

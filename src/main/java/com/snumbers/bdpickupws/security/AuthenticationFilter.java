@@ -63,7 +63,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String token = Jwts.builder()
                 .setSubject(userName)
                 .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.getTokenExpirationTime()))
-                .signWith(SignatureAlgorithm.RS512, SecurityConstants.getTokenSecret())
+                .signWith(SignatureAlgorithm.HS512, SecurityConstants.getTokenSecret())
                 .compact();
 
 //        LdapUserDetailsService ldapUserDetailsService = (LdapUserDetailsService) SpringApplicationContext.getBeans("ldapUserDetailsService");

@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class PickUpdateResponse {
 
-    private boolean hasError;
-    private String errorMessage;
+//    private boolean hasError;
+//    private String errorMessage;
     private Long id;
     private String item_id;
     private Long ful_ord_pick_id;
