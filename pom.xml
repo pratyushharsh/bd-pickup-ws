@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>bd-pickup-ws</name>
-    <description>Api For Bloomingdales Packing mobile app.</description>
+    <description>Simservices api</description>
 
     <properties>
         <java.version>1.8</java.version>
